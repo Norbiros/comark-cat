@@ -1,8 +1,15 @@
-catalog:
-  vite: npm:@voidzero-dev/vite-plus-core@0.2.8
-  vite-plus: 0.2.8
+catalogs:
+  build:
+    publint: 0.3.23
+    typescript: 7.0.2
+    unplugin-unused: 0.5.7
+  types:
+    "@types/node": 24.13.3
+  vite:
+    vite: npm:@voidzero-dev/vite-plus-core@0.2.8
+    vite-plus: 0.2.8
 overrides:
-  vite: "catalog:"
+  vite: "catalog:vite"
 peerDependencyRules:
   allowAny:
     - vite

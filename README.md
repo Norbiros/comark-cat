@@ -1,23 +1,19 @@
-# vite-plus-starter
+# comark-cli
 
-A starter for creating a Vite Plus project.
+Render Markdown for command-line interfaces.
 
 ## Development
 
-- Install dependencies:
+Install dependencies:
 
 ```bash
 vp install
 ```
 
-- Run the unit tests:
+Run all checks:
 
 ```bash
+vp check
 vp test
-```
-
-- Build the library:
-
-```bash
 vp pack
 ```

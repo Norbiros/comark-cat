@@ -1,21 +1,14 @@
 {
   "name": "comark-cli",
   "version": "0.0.0",
-  "description": "A starter for creating a TypeScript package.",
-  "homepage": "https://github.com/author/library#readme",
-  "bugs": {
-    "url": "https://github.com/author/library/issues"
-  },
+  "description": "Render Markdown for command-line interfaces.",
   "license": "MIT",
-  "author": "Author Name <author.name@mail.com>",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/author/library.git"
-  },
+  "author": "Norbiros <norbiros@protonmail.com>",
   "files": [
     "dist"
   ],
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
     "./package.json": "./package.json"
@@ -28,15 +21,16 @@
     "dev": "vp pack --watch",
     "test": "vp test",
     "check": "vp check",
-    "prepublishOnly": "vp run build",
+    "prepack": "vp pack",
     "prepare": "vp config"
   },
   "devDependencies": {
-    "@types/node": "^26.1.1",
-    "bumpp": "^11.1.0",
-    "typescript": "^7.0.2",
-    "vite": "catalog:",
-    "vite-plus": "catalog:"
+    "@types/node": "catalog:types",
+    "publint": "catalog:build",
+    "typescript": "catalog:build",
+    "unplugin-unused": "catalog:build",
+    "vite": "catalog:vite",
+    "vite-plus": "catalog:vite"
   },
   "devEngines": {
     "packageManager": {
@@ -44,5 +38,9 @@
       "version": "11.20.0",
       "onFail": "download"
     }
-  }
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@11.20.0"
 }

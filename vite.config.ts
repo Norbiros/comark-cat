@@ -5,10 +5,16 @@ export default defineConfig({
     "*": "vp check --fix",
   },
   pack: {
+    deps: {
+      neverBundle: true,
+    },
     dts: {
       tsgo: true,
     },
     exports: true,
+    publint: true,
+    sourcemap: true,
+    unused: true,
   },
   lint: {
     options: {
