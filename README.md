@@ -21,12 +21,13 @@ git show HEAD:README.md | comark
 
 ## Features
 
-- Syntax highlighting for fenced code blocks with Rangi
+- Syntax-highlighted fenced code blocks powered by [Rangi](https://npmx.dev/package/rangi)
 - Tables, task lists, alerts, footnotes, and emoji
 - Inline and block math powered by KaTeX
 - Mermaid diagrams rendered as terminal-friendly text
-- Terminal-aware colors, width, and pager support
-- Lazy loading of rich renderers only when the document needs them
+- Terminal-aware colors, responsive width, and pager support
+
+Huge thanks to [`@comark/ansi`](https://npmx.dev/package/@comark/ansi) for powering most of these features 😻
 
 ## Installation
 
