@@ -1,9 +1,23 @@
 {
   "name": "comark-cat",
   "version": "0.0.0",
-  "description": "Render Markdown beautifully on the CLI.",
+  "description": "Simply render Markdown in your terminal with Comark.",
+  "keywords": [
+    "cli",
+    "comark",
+    "markdown",
+    "terminal"
+  ],
+  "homepage": "https://github.com/Norbiros/comark-cat#readme",
+  "bugs": {
+    "url": "https://github.com/Norbiros/comark-cat/issues"
+  },
   "license": "MIT",
   "author": "Norbiros <norbiros@protonmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Norbiros/comark-cat.git"
+  },
   "bin": {
     "comark": "./dist/comark-cat.mjs"
   },

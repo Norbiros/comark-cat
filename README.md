@@ -2,7 +2,7 @@
   <img src="./assets/banner.svg" width="900" alt="comark-cat rendering Markdown in a terminal">
 </p>
 
-Simply render Markdown powerful on the CLI, powered by [Comark](<[Comark](https://comark.dev)>).
+Simply render Markdown in your terminal with [Comark](https://comark.dev).
 
 ## What is it?
 
