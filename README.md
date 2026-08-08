@@ -12,6 +12,9 @@ Simply render Markdown powerful on the CLI, powered by [Comark](<[Comark](https:
 # Read a file
 comark README.md
 
+# Read multiple files
+comark README.md DEVELOPMENT.md
+
 # Read from stdin
 git show HEAD:README.md | comark
 ```
