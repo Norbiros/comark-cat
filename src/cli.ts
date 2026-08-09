@@ -1,8 +1,10 @@
 import { spawn } from "node:child_process";
 import { defineCommand } from "citty";
+import { createSupportsHyperlinks } from "supports-hyperlinks";
 import packageJson from "../package.json" with { type: "json" };
 import { readMarkdown } from "./input.ts";
 import { renderMarkdown, renderMarkdownStream, type RenderOptions } from "./render.ts";
+import { formatOutput } from "./terminal.ts";
 
 export function parseWidth(value: string): number {
   const width = Number(value);
@@ -10,6 +12,21 @@ export function parseWidth(value: string): number {
     throw new Error(`Width must be a positive integer, received ${JSON.stringify(value)}.`);
   }
   return width;
+}
+
+export type HyperlinkMode = "auto" | "on" | "off";
+
+export function parseHyperlinkMode(value: string): HyperlinkMode {
+  if (value === "auto" || value === "on" || value === "off") return value;
+  throw new Error(`Hyperlinks must be auto, on, or off; received ${JSON.stringify(value)}.`);
+}
+
+export function useHyperlinks(
+  mode: HyperlinkMode,
+  output: Pick<NodeJS.WriteStream, "isTTY"> = process.stdout,
+): boolean {
+  if (mode !== "auto") return mode === "on";
+  return createSupportsHyperlinks(output);
 }
 
 async function writeToPager(output: string): Promise<void> {
@@ -74,6 +91,12 @@ export const main = defineCommand({
       negativeDescription: "Disable syntax highlighting",
       default: true,
     },
+    hyperlinks: {
+      type: "string",
+      description: "Render links as OSC 8 hyperlinks: auto, on, or off",
+      valueHint: "mode",
+      default: "auto",
+    },
     math: {
       type: "boolean",
       description: "Enable inline and block math",
@@ -111,9 +134,11 @@ export const main = defineCommand({
       throw new Error("--stream cannot be used with --pager.");
     }
 
+    const hyperlinkMode = parseHyperlinkMode(args.hyperlinks);
     const renderOptions: RenderOptions = {
       colors: args.color,
       highlight: args.highlight,
+      hyperlinks: useHyperlinks(hyperlinkMode),
       math: args.math,
       mermaid: args.mermaid,
       width: parseWidth(args.width),
@@ -127,7 +152,7 @@ export const main = defineCommand({
     const markdown = await readMarkdown(args._);
     const output = await renderMarkdown(markdown, renderOptions);
 
-    const formatted = `${output.replace(/\n+$/, "")}\n`;
+    const formatted = formatOutput(output);
     if (args.pager) await writeToPager(formatted);
     else process.stdout.write(formatted);
   },

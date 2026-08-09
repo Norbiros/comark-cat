@@ -16,6 +16,26 @@ test("renders Markdown without ANSI colors", async () => {
   expect(output).not.toContain("\u001B[");
 });
 
+test("renders links as OSC 8 hyperlinks", async () => {
+  const output = await renderMarkdown("Read [the docs](https://example.com/docs).", {
+    colors: false,
+    hyperlinks: true,
+  });
+
+  expect(output).toContain("\u001B]8;;https://example.com/docs\u001B\\the docs\u001B]8;;\u001B\\");
+  expect(output).not.toContain("the docs (https://example.com/docs)");
+});
+
+test("falls back to visible link destinations when hyperlinks are off", async () => {
+  const output = await renderMarkdown("Read [the docs](https://example.com/docs).", {
+    colors: false,
+    hyperlinks: false,
+  });
+
+  expect(output).toContain("the docs (https://example.com/docs)");
+  expect(output).not.toContain("\u001B]8;;");
+});
+
 test("highlights fenced code with Rangi", async () => {
   const output = await renderMarkdown("```js\nconst answer = 42\n```", {
     colors: true,

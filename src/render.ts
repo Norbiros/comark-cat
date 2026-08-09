@@ -1,9 +1,19 @@
-import type { NodeHandler } from "@comark/ansi/render";
+import { resolveAttribute, type NodeHandler } from "@comark/ansi/render";
 import type { Readable } from "node:stream";
+import {
+  clearPrevious,
+  formatOutput,
+  HIDE_CURSOR,
+  hyperlink,
+  sanitize,
+  SHOW_CURSOR,
+  visibleLink,
+} from "./terminal.ts";
 
 export interface RenderOptions {
   colors?: boolean;
   highlight?: boolean;
+  hyperlinks?: boolean;
   math?: boolean;
   mermaid?: boolean;
   width?: number;
@@ -11,9 +21,20 @@ export interface RenderOptions {
 
 type MarkdownRenderer = (markdown: string, options?: RenderOptions) => Promise<string>;
 
-const hideCursor = "\u001B[?25l";
-const clearToEnd = "\u001B[J";
-const showCursor = "\u001B[?25h";
+function link(hyperlinks: boolean): NodeHandler {
+  return async (node, state) => {
+    const rawHref = resolveAttribute(node[1], state.renderData, "href");
+    const href = sanitize(
+      typeof rawHref === "string" || typeof rawHref === "number" ? String(rawHref) : "",
+    );
+    const content = await state.flow(node, state);
+
+    if (!href) return content;
+    return hyperlinks
+      ? hyperlink(content, href)
+      : visibleLink(content, href, Boolean(state.context.colors));
+  };
+}
 
 const Step: NodeHandler = async (node, state) => {
   const rawTitle = node[1].title;
@@ -93,7 +114,11 @@ export async function renderMarkdown(markdown: string, options: RenderOptions = 
 
   type AnsiOptions = NonNullable<Parameters<typeof ansiModule.renderAnsi>[1]>;
   const plugins: NonNullable<AnsiOptions["plugins"]> = [...defaultPlugins];
-  const components: NonNullable<AnsiOptions["components"]> = { Step, Steps };
+  const components: NonNullable<AnsiOptions["components"]> = {
+    a: link(options.hyperlinks ?? false),
+    Step,
+    Steps,
+  };
 
   if (emojiModule) plugins.push(emojiModule.default());
   if (footnotesModule) {
@@ -133,18 +158,17 @@ export async function renderMarkdownStream(
   try {
     for await (const chunk of input) {
       if (!started) {
-        writer(hideCursor);
+        writer(HIDE_CURSOR);
         started = true;
       }
 
       markdown += chunk;
       const output = await renderer(markdown, options);
-      const formatted = `${output.replace(/\n+$/, "")}\n`;
-      const clearPrevious = renderedLines > 0 ? `\u001B[${renderedLines}F${clearToEnd}` : "";
-      writer(`${clearPrevious}${formatted}`);
+      const formatted = formatOutput(output);
+      writer(`${clearPrevious(renderedLines)}${formatted}`);
       renderedLines = formatted.match(/\n/g)?.length ?? 0;
     }
   } finally {
-    if (started) writer(showCursor);
+    if (started) writer(SHOW_CURSOR);
   }
 }
