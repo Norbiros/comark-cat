@@ -1,0 +1,15 @@
+name: 🧪 Tests
+description: Suggest a new test or improvement to existing tests.
+title: "[Tests]: "
+labels:
+  - "type: tests"
+  - "status: pending triage"
+body:
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Test suggestion
+      description: Describe the test you want to add or improve, including what it should check and how.
+      placeholder: Add a test for...
+    validations:
+      required: true

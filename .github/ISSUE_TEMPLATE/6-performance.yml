@@ -1,0 +1,29 @@
+name: 🦀 Performance
+description: Report a performance issue or suggest an optimization.
+title: "[Perf]: "
+labels:
+  - "type: performance"
+  - "status: pending triage"
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Problem
+      description: Describe the performance issue or area that could be optimized. What’s slow or inefficient?
+      placeholder: Rendering this component takes too long...
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested improvement
+      description: Explain how performance could be improved. Include ideas, techniques, or alternatives.
+      placeholder: Use memoization to...
+
+  - type: textarea
+    id: additionalcontext
+    attributes:
+      label: Benchmarks or additional context
+      description: If possible, share benchmarks, profiling results, or comparisons to support your suggestion.
+      placeholder: "Current load time: 5s. Expected: <1s."

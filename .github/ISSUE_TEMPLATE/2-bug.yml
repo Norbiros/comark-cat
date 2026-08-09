@@ -1,0 +1,32 @@
+name: 🐛 Bug
+description: Report a bug.
+title: "[Bug]: "
+labels:
+  - "type: bug"
+  - "status: pending triage"
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Include a clear and concise description of what should happen and what's actually happening.
+      placeholder: Clicking the button does not trigger...
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Provide an easy to follow set of steps to reproduce this bug.
+      placeholder: |
+        1. Open browser
+        2. Go to ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: additonalcontext
+    attributes:
+      label: Demonstration(s) and additional context
+      description: If applicable, insert screenshots, logs or a live example to help demonstrate your problem, as well as any other useful information here.

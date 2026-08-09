@@ -1,0 +1,15 @@
+name: 🧹 Refactor
+description: Improve, reorganize or simplify existing code.
+title: "[Refactor]: "
+labels:
+  - "type: refactor"
+  - "status: pending triage"
+body:
+  - type: textarea
+    id: whattochange
+    attributes:
+      label: What to refactor?
+      description: Describe current code status and how to improve it.
+      placeholder: Change function abc to...
+    validations:
+      required: true

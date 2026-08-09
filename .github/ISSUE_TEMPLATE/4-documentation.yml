@@ -1,0 +1,22 @@
+name: 📚 Documentation
+description: Suggest new documentation or improvements (typos, clarity, details).
+title: "[Documentation]: "
+labels:
+  - "type: documentation"
+  - "status: pending triage"
+body:
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Documentation suggestion
+      description: Describe the changes you want in the documentation and why.
+      placeholder: Add an example or explanation for...
+    validations:
+      required: true
+
+  - type: input
+    id: references
+    attributes:
+      label: References / Sources
+      description: Add URLs, documentation pages, tutorials, or other resources that support your suggestion.
+      placeholder: https://example.com/docs
