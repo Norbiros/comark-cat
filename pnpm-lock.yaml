@@ -229,10 +229,13 @@ overrides:
 importers:
 
   .:
-    dependencies:
+    devDependencies:
       '@comark/ansi':
         specifier: 0.6.1
         version: 0.6.1(beautiful-mermaid@1.1.3)(katex@0.17.0)(rangi@2.2.0)(shiki@4.4.2)
+      '@types/node':
+        specifier: catalog:types
+        version: 24.13.3
       beautiful-mermaid:
         specifier: ^1.1.3
         version: 1.1.3
@@ -242,16 +245,12 @@ importers:
       katex:
         specifier: ^0.17.0
         version: 0.17.0
-      rangi:
-        specifier: ^2.2.0
-        version: 2.2.0
-    devDependencies:
-      '@types/node':
-        specifier: catalog:types
-        version: 24.13.3
       publint:
         specifier: catalog:build
         version: 0.3.23
+      rangi:
+        specifier: ^2.2.0
+        version: 2.2.0
       typescript:
         specifier: catalog:build
         version: 7.0.2

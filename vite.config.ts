@@ -9,14 +9,12 @@ export default defineConfig({
       "comark-cat": "src/index.ts",
     },
     deps: {
-      neverBundle: true,
+      onlyBundle: false,
     },
-    dts: {
-      tsgo: true,
-    },
+    dts: false,
     exports: false,
+    minify: true,
     publint: true,
-    sourcemap: true,
     unused: {
       // These are optional peers loaded by the enabled Comark plugins at runtime.
       ignore: {
