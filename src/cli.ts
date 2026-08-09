@@ -2,7 +2,7 @@ import { spawn } from "node:child_process";
 import { defineCommand } from "citty";
 import packageJson from "../package.json" with { type: "json" };
 import { readMarkdown } from "./input.ts";
-import { renderMarkdown } from "./render.ts";
+import { renderMarkdown, renderMarkdownStream, type RenderOptions } from "./render.ts";
 
 export function parseWidth(value: string): number {
   const width = Number(value);
@@ -63,6 +63,11 @@ export const main = defineCommand({
       description: "Display output with $PAGER or less",
       default: false,
     },
+    stream: {
+      type: "boolean",
+      description: "Render piped stdin as it arrives",
+      default: false,
+    },
     highlight: {
       type: "boolean",
       description: "Enable Rangi syntax highlighting",
@@ -99,14 +104,28 @@ export const main = defineCommand({
       return;
     }
 
-    const markdown = await readMarkdown(args._);
-    const output = await renderMarkdown(markdown, {
+    if (args.stream && (args._.length > 1 || (args._[0] !== undefined && args._[0] !== "-"))) {
+      throw new Error("--stream only supports stdin input.");
+    }
+    if (args.stream && args.pager) {
+      throw new Error("--stream cannot be used with --pager.");
+    }
+
+    const renderOptions: RenderOptions = {
       colors: args.color,
       highlight: args.highlight,
       math: args.math,
       mermaid: args.mermaid,
       width: parseWidth(args.width),
-    });
+    };
+
+    if (args.stream) {
+      await renderMarkdownStream(process.stdin, renderOptions);
+      return;
+    }
+
+    const markdown = await readMarkdown(args._);
+    const output = await renderMarkdown(markdown, renderOptions);
 
     const formatted = `${output.replace(/\n+$/, "")}\n`;
     if (args.pager) await writeToPager(formatted);

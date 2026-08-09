@@ -91,6 +91,12 @@ cmk README.md --no-color
 cmk README.md --pager
 ```
 
+Render piped Markdown incrementally as it arrives, for example from an LLM:
+
+```bash
+for chunk in '# Generating' '' 'Streaming **Markdown**...'; do printf '%s\n' "$chunk"; sleep 1; done | cmk --stream
+```
+
 Optional renderers can be disabled individually:
 
 ```bash

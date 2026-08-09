@@ -1,5 +1,6 @@
+import { Readable } from "node:stream";
 import { expect, test } from "vite-plus/test";
-import { renderMarkdown } from "../src/render.ts";
+import { renderMarkdown, renderMarkdownStream } from "../src/render.ts";
 
 test("renders Markdown without ANSI colors", async () => {
   const output = await renderMarkdown("# Hello\n\nA **bold** word.", {
@@ -70,4 +71,45 @@ test("keeps detected built-in Markdown features", async () => {
   expect(output).not.toContain("title: Hidden");
   expect(output).toContain("NOTE");
   expect(output).toContain("[x] Complete");
+});
+
+test("re-renders accumulated Markdown as input streams", async () => {
+  const rendered: string[] = [];
+  const written: string[] = [];
+  const input = Readable.from(["# Hel", "lo\n"]);
+
+  await renderMarkdownStream(
+    input,
+    { colors: false },
+    (output) => written.push(output),
+    async (markdown) => {
+      rendered.push(markdown);
+      return `rendered: ${markdown}`;
+    },
+  );
+
+  expect(rendered).toEqual(["# Hel", "# Hello\n"]);
+  expect(written).toEqual([
+    "\u001B[?25l",
+    "rendered: # Hel\n",
+    "\u001B[1F\u001B[Jrendered: # Hello\n",
+    "\u001B[?25h",
+  ]);
+});
+
+test("restores the cursor when streaming render fails", async () => {
+  const written: string[] = [];
+  const input = Readable.from(["partial"]);
+
+  await expect(
+    renderMarkdownStream(
+      input,
+      {},
+      (output) => written.push(output),
+      async () => {
+        throw new Error("render failed");
+      },
+    ),
+  ).rejects.toThrow("render failed");
+  expect(written.at(-1)).toBe("\u001B[?25h");
 });

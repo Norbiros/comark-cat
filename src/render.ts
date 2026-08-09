@@ -1,4 +1,5 @@
 import type { NodeHandler } from "@comark/ansi/render";
+import type { Readable } from "node:stream";
 
 export interface RenderOptions {
   colors?: boolean;
@@ -7,6 +8,12 @@ export interface RenderOptions {
   mermaid?: boolean;
   width?: number;
 }
+
+type MarkdownRenderer = (markdown: string, options?: RenderOptions) => Promise<string>;
+
+const hideCursor = "\u001B[?25l";
+const clearToEnd = "\u001B[J";
+const showCursor = "\u001B[?25h";
 
 const Step: NodeHandler = async (node, state) => {
   const rawTitle = node[1].title;
@@ -110,4 +117,34 @@ export async function renderMarkdown(markdown: string, options: RenderOptions = 
     plugins,
     components,
   });
+}
+
+export async function renderMarkdownStream(
+  input: Readable,
+  options: RenderOptions = {},
+  writer: (output: string) => void = (output) => process.stdout.write(output),
+  renderer: MarkdownRenderer = renderMarkdown,
+): Promise<void> {
+  let markdown = "";
+  let renderedLines = 0;
+  let started = false;
+  input.setEncoding("utf8");
+
+  try {
+    for await (const chunk of input) {
+      if (!started) {
+        writer(hideCursor);
+        started = true;
+      }
+
+      markdown += chunk;
+      const output = await renderer(markdown, options);
+      const formatted = `${output.replace(/\n+$/, "")}\n`;
+      const clearPrevious = renderedLines > 0 ? `\u001B[${renderedLines}F${clearToEnd}` : "";
+      writer(`${clearPrevious}${formatted}`);
+      renderedLines = formatted.match(/\n/g)?.length ?? 0;
+    }
+  } finally {
+    if (started) writer(showCursor);
+  }
 }
