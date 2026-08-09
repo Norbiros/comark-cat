@@ -34,7 +34,7 @@ const defaultColors = Boolean(process.stdout.isTTY && process.env.NO_COLOR === u
 
 export const main = defineCommand({
   meta: {
-    name: "comark",
+    name: "comark-cat",
     version: packageJson.version,
     description: "Render Markdown as styled ANSI output in the terminal.",
   },
@@ -86,12 +86,12 @@ export const main = defineCommand({
     if (args._.length === 0 && process.stdin.isTTY) {
       process.stderr.write(
         [
-          "comark: no Markdown to render",
+          "comark-cat: no Markdown to render",
           "",
-          "  comark README.md",
-          "  cat README.md | comark",
+          "  comark-cat README.md",
+          "  cat README.md | comark-cat",
           "",
-          "Run `comark --help` for more options.",
+          "Run `comark-cat --help` for more options.",
           "",
         ].join("\n"),
       );

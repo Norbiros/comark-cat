@@ -26,6 +26,6 @@ vp install --global .
 After rebuilding, try it with a file or a pipe:
 
 ```bash
-comark README.md
-printf '# Hello\n\nMarkdown from stdin.' | comark
+cmk README.md
+printf '# Hello\n\nMarkdown from stdin.' | cmk
 ```

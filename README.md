@@ -10,14 +10,16 @@ Simply render Markdown in your terminal with [Comark](https://comark.dev).
 
 ```bash
 # Read a file
-comark README.md
+cmk README.md
 
 # Read multiple files
-comark README.md DEVELOPMENT.md
+cmk README.md DEVELOPMENT.md
 
 # Read from stdin
-git show HEAD:README.md | comark
+git show HEAD:README.md | cmk
 ```
+
+The package installs both `cmk` and `comark-cat`; they are equivalent, so use whichever name you prefer.
 
 ## Features
 
@@ -83,24 +85,24 @@ Requires Node.js 22 or newer.
 Set the output width, turn off colors, or open the result in your pager:
 
 ```bash
-comark README.md --width 100
-comark README.md --no-color
-comark README.md --pager
+cmk README.md --width 100
+cmk README.md --no-color
+cmk README.md --pager
 ```
 
 Optional renderers can be disabled individually:
 
 ```bash
-comark README.md --no-highlight --no-math --no-mermaid
+cmk README.md --no-highlight --no-math --no-mermaid
 ```
 
 An explicit `-` selects stdin:
 
 ```bash
-git show HEAD:README.md | comark -
+git show HEAD:README.md | cmk -
 ```
 
-Run `comark --help` for all available options.
+Run `cmk --help` (or `comark-cat --help`) for all available options.
 
 ## Development
 

@@ -19,7 +19,8 @@
     "url": "git+https://github.com/Norbiros/comark-cat.git"
   },
   "bin": {
-    "comark": "./dist/comark-cat.mjs"
+    "cmk": "./dist/comark-cat.mjs",
+    "comark-cat": "./dist/comark-cat.mjs"
   },
   "files": [
     "dist"
