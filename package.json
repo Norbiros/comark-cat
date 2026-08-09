@@ -26,14 +26,6 @@
     "dist"
   ],
   "type": "module",
-  "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./dist/comark-cat.d.mts",
-      "import": "./dist/comark-cat.mjs"
-    },
-    "./package.json": "./package.json"
-  },
   "publishConfig": {
     "access": "public",
     "provenance": true,
