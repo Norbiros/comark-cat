@@ -6,7 +6,8 @@ Simply render Markdown in your terminal with [Comark](https://comark.dev).
 
 ## What is it?
 
-`comark-cat` turns Markdown files and streams into polished terminal output. It understands the Markdown you actually use, from tables and task lists to highlighted code, math, and Mermaid diagrams.
+`comark-cat` turns Markdown files and streams into polished terminal output.
+It ships in a compressed package under 700 KB while supporting syntax highlighting, tables, alerts, footnotes, and terminal-rendered Mermaid diagrams.
 
 ```bash
 # Read a file
