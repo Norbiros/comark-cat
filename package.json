@@ -1,6 +1,6 @@
 {
   "name": "comark-cat",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Simply render Markdown in your terminal with Comark.",
   "keywords": [
     "cli",
