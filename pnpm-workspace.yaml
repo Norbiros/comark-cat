@@ -2,7 +2,7 @@ catalogs:
   build:
     publint: 0.3.23
     typescript: 7.0.2
-    unplugin-unused: 0.5.7
+    unplugin-unused: 0.6.0
   types:
     "@types/node": 24.13.3
   vite:

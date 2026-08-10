@@ -212,8 +212,8 @@ catalogs:
       specifier: 7.0.2
       version: 7.0.2
     unplugin-unused:
-      specifier: 0.5.7
-      version: 0.5.7
+      specifier: 0.6.0
+      version: 0.6.0
   types:
     '@types/node':
       specifier: 24.13.3
@@ -259,13 +259,13 @@ importers:
         version: 7.0.2
       unplugin-unused:
         specifier: catalog:build
-        version: 0.5.7(@voidzero-dev/vite-plus-core@0.2.8)
+        version: 0.6.0(@voidzero-dev/vite-plus-core@0.2.8)
       vite:
         specifier: npm:@voidzero-dev/vite-plus-core@0.2.8
-        version: '@voidzero-dev/vite-plus-core@0.2.8(@types/node@24.13.3)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.5.7)'
+        version: '@voidzero-dev/vite-plus-core@0.2.8(@types/node@24.13.3)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.6.0)'
       vite-plus:
         specifier: catalog:vite
-        version: 0.2.8(@types/node@24.13.3)(@voidzero-dev/vite-plus-core@0.2.8)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.5.7)
+        version: 0.2.8(@types/node@24.13.3)(@voidzero-dev/vite-plus-core@0.2.8)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.6.0)
 
 packages:
 
@@ -1418,9 +1418,9 @@ packages:
   undici-types@7.18.2:
     resolution: {integrity: sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==}
 
-  unplugin-unused@0.5.7:
-    resolution: {integrity: sha512-quvqrHs6mPhk1hjbGwMoypXfagveue+/22dtgDrEzc2K9485ZAsnVfq7iYIgv7FwooiRa6+HDaLWgK2IavN+2g==}
-    engines: {node: '>=20.19.0'}
+  unplugin-unused@0.6.0:
+    resolution: {integrity: sha512-ov+8yoEs5lyCjK7AqSUmpLuyEhtHwKtNtc1PrpwJVCNQjv+Dins4+7e1+ej57yo8lfiW/zOr9FAEmNmjgU+hFQ==}
+    engines: {node: ^22.18.0 || ^24.11.0 || >=26.0.0}
 
   unplugin@3.3.0:
     resolution: {integrity: sha512-qa66K+crbfyE6JK10GjvbJeRrOsuC/JpbnHctfyp/i4oBTxWOzJfRZyDiOk1PtErMFRu8JhsU/wPvOdBNWe5Rg==}
@@ -1861,7 +1861,7 @@ snapshots:
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: '@voidzero-dev/vite-plus-core@0.2.8(@types/node@24.13.3)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.5.7)'
+      vite: '@voidzero-dev/vite-plus-core@0.2.8(@types/node@24.13.3)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.6.0)'
 
   '@vitest/pretty-format@4.1.10':
     dependencies:
@@ -1887,7 +1887,7 @@ snapshots:
       convert-source-map: 2.0.0
       tinyrainbow: 3.1.1
 
-  '@voidzero-dev/vite-plus-core@0.2.8(@types/node@24.13.3)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.5.7)':
+  '@voidzero-dev/vite-plus-core@0.2.8(@types/node@24.13.3)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.6.0)':
     dependencies:
       '@oxc-project/runtime': 0.142.0
       '@oxc-project/types': 0.142.0
@@ -1908,7 +1908,7 @@ snapshots:
       fsevents: 2.3.3
       publint: 0.3.23
       typescript: 7.0.2
-      unplugin-unused: 0.5.7(@voidzero-dev/vite-plus-core@0.2.8)
+      unplugin-unused: 0.6.0(@voidzero-dev/vite-plus-core@0.2.8)
 
   '@voidzero-dev/vite-plus-darwin-arm64@0.2.8':
     optional: true
@@ -2187,7 +2187,7 @@ snapshots:
 
   obug@2.1.4: {}
 
-  oxfmt@0.61.0(vite-plus@0.2.8(@types/node@24.13.3)(@voidzero-dev/vite-plus-core@0.2.8)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.5.7)):
+  oxfmt@0.61.0(vite-plus@0.2.8(@types/node@24.13.3)(@voidzero-dev/vite-plus-core@0.2.8)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.6.0)):
     dependencies:
       tinypool: 2.1.0
     optionalDependencies:
@@ -2210,7 +2210,7 @@ snapshots:
       '@oxfmt/binding-win32-arm64-msvc': 0.61.0
       '@oxfmt/binding-win32-ia32-msvc': 0.61.0
       '@oxfmt/binding-win32-x64-msvc': 0.61.0
-      vite-plus: 0.2.8(@types/node@24.13.3)(@voidzero-dev/vite-plus-core@0.2.8)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.5.7)
+      vite-plus: 0.2.8(@types/node@24.13.3)(@voidzero-dev/vite-plus-core@0.2.8)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.6.0)
 
   oxlint-tsgolint@7.0.2001:
     optionalDependencies:
@@ -2221,7 +2221,7 @@ snapshots:
       '@oxlint-tsgolint/win32-arm64': 7.0.2001
       '@oxlint-tsgolint/win32-x64': 7.0.2001
 
-  oxlint@1.76.0(oxlint-tsgolint@7.0.2001)(vite-plus@0.2.8(@types/node@24.13.3)(@voidzero-dev/vite-plus-core@0.2.8)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.5.7)):
+  oxlint@1.76.0(oxlint-tsgolint@7.0.2001)(vite-plus@0.2.8(@types/node@24.13.3)(@voidzero-dev/vite-plus-core@0.2.8)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.6.0)):
     optionalDependencies:
       '@oxlint/binding-android-arm-eabi': 1.76.0
       '@oxlint/binding-android-arm64': 1.76.0
@@ -2243,7 +2243,7 @@ snapshots:
       '@oxlint/binding-win32-ia32-msvc': 1.76.0
       '@oxlint/binding-win32-x64-msvc': 1.76.0
       oxlint-tsgolint: 7.0.2001
-      vite-plus: 0.2.8(@types/node@24.13.3)(@voidzero-dev/vite-plus-core@0.2.8)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.5.7)
+      vite-plus: 0.2.8(@types/node@24.13.3)(@voidzero-dev/vite-plus-core@0.2.8)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.6.0)
 
   package-manager-detector@1.8.0: {}
 
@@ -2347,7 +2347,7 @@ snapshots:
 
   undici-types@7.18.2: {}
 
-  unplugin-unused@0.5.7(@voidzero-dev/vite-plus-core@0.2.8):
+  unplugin-unused@0.6.0(@voidzero-dev/vite-plus-core@0.2.8):
     dependencies:
       empathic: 2.0.1
       escape-string-regexp: 5.0.0
@@ -2370,9 +2370,9 @@ snapshots:
       picomatch: 4.0.5
       webpack-virtual-modules: 0.6.2
     optionalDependencies:
-      vite: '@voidzero-dev/vite-plus-core@0.2.8(@types/node@24.13.3)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.5.7)'
+      vite: '@voidzero-dev/vite-plus-core@0.2.8(@types/node@24.13.3)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.6.0)'
 
-  vite-plus@0.2.8(@types/node@24.13.3)(@voidzero-dev/vite-plus-core@0.2.8)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.5.7):
+  vite-plus@0.2.8(@types/node@24.13.3)(@voidzero-dev/vite-plus-core@0.2.8)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.6.0):
     dependencies:
       '@oxc-project/types': 0.142.0
       '@oxlint/plugins': 1.73.0
@@ -2385,9 +2385,9 @@ snapshots:
       '@vitest/snapshot': 4.1.10
       '@vitest/spy': 4.1.10
       '@vitest/utils': 4.1.10
-      '@voidzero-dev/vite-plus-core': 0.2.8(@types/node@24.13.3)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.5.7)
-      oxfmt: 0.61.0(vite-plus@0.2.8(@types/node@24.13.3)(@voidzero-dev/vite-plus-core@0.2.8)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.5.7))
-      oxlint: 1.76.0(oxlint-tsgolint@7.0.2001)(vite-plus@0.2.8(@types/node@24.13.3)(@voidzero-dev/vite-plus-core@0.2.8)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.5.7))
+      '@voidzero-dev/vite-plus-core': 0.2.8(@types/node@24.13.3)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.6.0)
+      oxfmt: 0.61.0(vite-plus@0.2.8(@types/node@24.13.3)(@voidzero-dev/vite-plus-core@0.2.8)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.6.0))
+      oxlint: 1.76.0(oxlint-tsgolint@7.0.2001)(vite-plus@0.2.8(@types/node@24.13.3)(@voidzero-dev/vite-plus-core@0.2.8)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.6.0))
       oxlint-tsgolint: 7.0.2001
       vitest: 4.1.10(@types/node@24.13.3)(@vitest/browser-preview@4.1.10)(@voidzero-dev/vite-plus-core@0.2.8)
     optionalDependencies:
@@ -2450,7 +2450,7 @@ snapshots:
       tinyexec: 1.3.0
       tinyglobby: 0.2.17
       tinyrainbow: 3.1.1
-      vite: '@voidzero-dev/vite-plus-core@0.2.8(@types/node@24.13.3)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.5.7)'
+      vite: '@voidzero-dev/vite-plus-core@0.2.8(@types/node@24.13.3)(publint@0.3.23)(typescript@7.0.2)(unplugin-unused@0.6.0)'
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 24.13.3
