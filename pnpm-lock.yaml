@@ -231,8 +231,8 @@ importers:
   .:
     devDependencies:
       '@comark/ansi':
-        specifier: 0.6.1
-        version: 0.6.1(beautiful-mermaid@1.1.3)(katex@0.18.1)(rangi@2.2.0)
+        specifier: 0.6.2
+        version: 0.6.2(beautiful-mermaid@1.1.3)(katex@0.18.1)(rangi@2.2.0)
       '@types/node':
         specifier: catalog:types
         version: 24.13.3
@@ -284,8 +284,8 @@ packages:
   '@blazediff/core@1.9.1':
     resolution: {integrity: sha512-ehg3jIkYKulZh+8om/O25vkvSsXXwC+skXmyA87FFx6A/45eqOkZsBltMw/TVteb0mloiGT8oGRTcjRAz66zaA==}
 
-  '@comark/ansi@0.6.1':
-    resolution: {integrity: sha512-QsTbVL99d7Q5bJOpKQdRLhEc9DUcHeKQFdNZo4X1V0HuDZOAxR12jdjDFl/Vi1uysbHNd3l9MEPjWAQwVg/xXw==}
+  '@comark/ansi@0.6.2':
+    resolution: {integrity: sha512-Sp607/e31EJI7bzlZfzVnVZR8VAprTPIXIZA0RYAzVZuSwGeBRHFwkYaN+W0f+dWyEXk8p7DZBq4flumsts/PA==}
     peerDependencies:
       beautiful-mermaid: '>=1.0'
       katex: '>=0.16'
@@ -1061,8 +1061,8 @@ packages:
   citty@0.2.2:
     resolution: {integrity: sha512-+6vJA3L98yv+IdfKGZHBNiGW5KHn22e/JwID0Strsz8h4S/csAu/OuICwxrg44k5MRiZHWIo8XXuJgQTriRP4w==}
 
-  comark@0.6.1:
-    resolution: {integrity: sha512-CwvudkUGfSdoRYv5DGNddy1d0odxazpzh5/kK4UIQkrOWlWUa8D9TkMF+9iXj3/ebGr8VXAbkzFFw9WCPrPjDA==}
+  comark@0.6.2:
+    resolution: {integrity: sha512-hlWa7KlGPfRxovQavnHZlLlTUKrfwE7/o4ewCY0FzqFtRvVT8VdslrumQwELIiK9utsurpoSWCBFj1yVMtDOtw==}
     peerDependencies:
       beautiful-mermaid: ^1.1.3
       katex: ^0.17.0
@@ -1549,9 +1549,9 @@ snapshots:
 
   '@blazediff/core@1.9.1': {}
 
-  '@comark/ansi@0.6.1(beautiful-mermaid@1.1.3)(katex@0.18.1)(rangi@2.2.0)':
+  '@comark/ansi@0.6.2(beautiful-mermaid@1.1.3)(katex@0.18.1)(rangi@2.2.0)':
     dependencies:
-      comark: 0.6.1(beautiful-mermaid@1.1.3)(katex@0.18.1)(rangi@2.2.0)
+      comark: 0.6.2(beautiful-mermaid@1.1.3)(katex@0.18.1)(rangi@2.2.0)
     optionalDependencies:
       beautiful-mermaid: 1.1.3
       katex: 0.18.1
@@ -2023,7 +2023,7 @@ snapshots:
 
   citty@0.2.2: {}
 
-  comark@0.6.1(beautiful-mermaid@1.1.3)(katex@0.18.1)(rangi@2.2.0):
+  comark@0.6.2(beautiful-mermaid@1.1.3)(katex@0.18.1)(rangi@2.2.0):
     dependencies:
       entities: 8.0.0
       htmlparser2: 12.0.0
