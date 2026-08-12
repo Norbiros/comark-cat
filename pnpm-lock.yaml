@@ -232,7 +232,7 @@ importers:
     devDependencies:
       '@comark/ansi':
         specifier: 0.6.2
-        version: 0.6.2(beautiful-mermaid@1.1.3)(katex@0.18.2)(rangi@2.2.0)
+        version: 0.6.2(beautiful-mermaid@1.1.3)(katex@0.18.3)(rangi@2.2.0)
       '@types/node':
         specifier: catalog:types
         version: 24.13.3
@@ -243,8 +243,8 @@ importers:
         specifier: 0.2.2
         version: 0.2.2
       katex:
-        specifier: 0.18.2
-        version: 0.18.2
+        specifier: 0.18.3
+        version: 0.18.3
       publint:
         specifier: catalog:build
         version: 0.3.23
@@ -1173,8 +1173,8 @@ packages:
     resolution: {integrity: sha512-n+mUVyUX5bVv7G/G2zyIHOhdxfuU1dY2NOFzTQUWiMUbFss8b57NFlgCCaggU78wSw5KVS9cllzeLyzyR+n5nw==}
     hasBin: true
 
-  katex@0.18.2:
-    resolution: {integrity: sha512-3snve4y0SXTMequLim1FMiPvLGElySam0blN5xQZBqEY3lOJz1TnuaaiugnBZBqHzlSAGmFTYL7MCQkORuLKCA==}
+  katex@0.18.3:
+    resolution: {integrity: sha512-6kbPr8KiYZpRfNNIw+8Td33njnFzK/ELcw6bI9FzIHysYPatAUdepQimfCX1vG2VCD/5Lv+Gu6P5YA58k8HHmw==}
     hasBin: true
 
   lightningcss-android-arm64@1.33.0:
@@ -1549,12 +1549,12 @@ snapshots:
 
   '@blazediff/core@1.9.1': {}
 
-  '@comark/ansi@0.6.2(beautiful-mermaid@1.1.3)(katex@0.18.2)(rangi@2.2.0)':
+  '@comark/ansi@0.6.2(beautiful-mermaid@1.1.3)(katex@0.18.3)(rangi@2.2.0)':
     dependencies:
-      comark: 0.6.2(beautiful-mermaid@1.1.3)(katex@0.18.2)(rangi@2.2.0)
+      comark: 0.6.2(beautiful-mermaid@1.1.3)(katex@0.18.3)(rangi@2.2.0)
     optionalDependencies:
       beautiful-mermaid: 1.1.3
-      katex: 0.18.2
+      katex: 0.18.3
     transitivePeerDependencies:
       - rangi
 
@@ -2023,7 +2023,7 @@ snapshots:
 
   citty@0.2.2: {}
 
-  comark@0.6.2(beautiful-mermaid@1.1.3)(katex@0.18.2)(rangi@2.2.0):
+  comark@0.6.2(beautiful-mermaid@1.1.3)(katex@0.18.3)(rangi@2.2.0):
     dependencies:
       entities: 8.0.0
       htmlparser2: 12.0.0
@@ -2031,7 +2031,7 @@ snapshots:
       markdown-exit: 1.1.0-beta.2
     optionalDependencies:
       beautiful-mermaid: 1.1.3
-      katex: 0.18.2
+      katex: 0.18.3
       rangi: 2.2.0
 
   commander@8.3.0: {}
@@ -2104,7 +2104,7 @@ snapshots:
     dependencies:
       argparse: 2.0.1
 
-  katex@0.18.2:
+  katex@0.18.3:
     dependencies:
       commander: 8.3.0
 
