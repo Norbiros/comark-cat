@@ -1,6 +1,6 @@
 catalogs:
   build:
-    publint: 0.3.23
+    publint: 0.3.24
     typescript: 7.0.2
     unplugin-unused: 0.6.0
   types:
