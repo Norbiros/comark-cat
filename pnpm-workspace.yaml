@@ -4,7 +4,7 @@ catalogs:
     typescript: 7.0.2
     unplugin-unused: 0.6.0
   types:
-    "@types/node": 24.13.3
+    "@types/node": 24.13.5
   vite:
     vite: npm:@voidzero-dev/vite-plus-core@0.2.8
     vite-plus: 0.2.8
