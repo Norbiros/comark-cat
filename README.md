@@ -89,6 +89,7 @@ Set the output width, turn off colors, or open the result in your pager:
 cmk README.md --width 100
 cmk README.md --no-color
 cmk README.md --pager
+cmk README.md --frontmatter # or -f
 ```
 
 Render piped Markdown incrementally as it arrives, for example from an LLM:

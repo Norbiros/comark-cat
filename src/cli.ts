@@ -85,6 +85,12 @@ export const main = defineCommand({
       description: "Render piped stdin as it arrives",
       default: false,
     },
+    frontmatter: {
+      type: "boolean",
+      alias: ["f"],
+      description: "Display document frontmatter",
+      default: false,
+    },
     highlight: {
       type: "boolean",
       description: "Enable Rangi syntax highlighting",
@@ -137,6 +143,7 @@ export const main = defineCommand({
     const hyperlinkMode = parseHyperlinkMode(args.hyperlinks);
     const renderOptions: RenderOptions = {
       colors: args.color,
+      frontmatter: args.frontmatter,
       highlight: args.highlight,
       hyperlinks: useHyperlinks(hyperlinkMode),
       math: args.math,
