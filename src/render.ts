@@ -113,7 +113,7 @@ export async function renderMarkdown(markdown: string, options: RenderOptions = 
   ]);
 
   type AnsiOptions = NonNullable<Parameters<typeof ansiModule.renderAnsi>[1]>;
-  const plugins: NonNullable<AnsiOptions["plugins"]> = [...defaultPlugins];
+  const plugins: Array<NonNullable<AnsiOptions["plugins"]>[number]> = [...defaultPlugins];
   const components: NonNullable<AnsiOptions["components"]> = {
     a: link(options.hyperlinks ?? false),
     Step,
