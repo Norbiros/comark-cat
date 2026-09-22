@@ -12,6 +12,7 @@ import {
 
 export interface RenderOptions {
   colors?: boolean;
+  frontmatter?: boolean;
   highlight?: boolean;
   hyperlinks?: boolean;
   math?: boolean;
@@ -68,10 +69,10 @@ export async function renderMarkdown(markdown: string, options: RenderOptions = 
   const hasMath = enableMath && markdown.includes("$");
   const hasMermaid =
     enableMermaid && /^ {0,3}(?:`{3,}|~{3,})[ \t]*mermaid(?:\s|$)/im.test(markdown);
+  const hasFrontmatter = /^(?:\uFEFF)?---[ \t]*\r?\n/.test(markdown);
   const hasHighlightedCode =
     options.highlight !== false &&
     /^ {0,3}(?:`{3,}|~{3,})[ \t]*(?!mermaid(?:\s|$))\S+/im.test(markdown);
-  const hasFrontmatter = /^(?:\uFEFF)?---[ \t]*\r?\n/.test(markdown);
   const hasAlert = /^ {0,3}>[ \t]*\[!(?:NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/im.test(markdown);
   const hasTaskList = /^\s*[-+*][ \t]+\[[ xX]\][ \t]+/m.test(markdown);
   const hasComponent = /(^|\s):{1,2}[A-Za-z][\w-]*/m.test(markdown);
@@ -120,6 +121,24 @@ export async function renderMarkdown(markdown: string, options: RenderOptions = 
     Steps,
   };
 
+  if (options.frontmatter && hasFrontmatter) {
+    components.DocumentFrontmatter = async (node, state) => {
+      const source = node[2];
+      if (typeof source !== "string") return "";
+      if (!state.context.colors || options.highlight === false) return `${source}\n\n`;
+      const { codeToAnsi } = await import("rangi");
+      return `${codeToAnsi(source, { lang: "yaml" })}\n\n`;
+    };
+    plugins.push({
+      name: "display-frontmatter",
+      post(state) {
+        // Reuse the source extracted by Comark, preserving YAML comments and formatting.
+        const source: unknown = state.frontmatterText;
+        if (typeof source !== "string" || !source) return;
+        state.tree.nodes.unshift(["DocumentFrontmatter", {}, `---\n${source}\n---`]);
+      },
+    });
+  }
   if (emojiModule) plugins.push(emojiModule.default());
   if (footnotesModule) {
     plugins.push(footnotesModule.default());

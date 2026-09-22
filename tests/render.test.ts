@@ -1,4 +1,5 @@
 import { Readable } from "node:stream";
+import { stripVTControlCharacters } from "node:util";
 import { expect, test } from "vite-plus/test";
 import { renderMarkdown, renderMarkdownStream } from "../src/render.ts";
 
@@ -91,6 +92,41 @@ test("keeps detected built-in Markdown features", async () => {
   expect(output).not.toContain("title: Hidden");
   expect(output).toContain("NOTE");
   expect(output).toContain("[x] Complete");
+});
+
+test.each([
+  { colors: true, highlight: true, colored: true },
+  { colors: false, highlight: true, colored: false },
+  { colors: true, highlight: false, colored: false },
+])(
+  "renders frontmatter without fences with $colors colors and $highlight highlighting",
+  async ({ colors, highlight, colored }) => {
+    const source = '---\n# Comment\ntitle: "**literal**"\nitems:\n  - one\n  - two\n---';
+    const output = await renderMarkdown(source, { frontmatter: true, colors, highlight });
+
+    expect(output.includes("\u001B[")).toBe(colored);
+    expect(stripVTControlCharacters(output).trimEnd()).toBe(source);
+  },
+);
+
+test("omits fences only for frontmatter, preserving ordinary YAML code blocks", async () => {
+  const output = await renderMarkdown("---\ntitle: Visible\n---\n\n```yaml\nkey: value\n```", {
+    colors: false,
+    frontmatter: true,
+    highlight: false,
+  });
+
+  expect(output).toMatch(/^---\ntitle: Visible\n---\n/);
+  expect(output.match(/```/g)).toHaveLength(2);
+  expect(output).toContain("key: value");
+});
+
+test("does not mistake separators in the body for frontmatter", async () => {
+  const markdown = "# Body\n\n---\ntitle: ordinary content\n---";
+  const options = { colors: false, highlight: false };
+  expect(await renderMarkdown(markdown, { ...options, frontmatter: true })).toBe(
+    await renderMarkdown(markdown, { ...options, frontmatter: false }),
+  );
 });
 
 test("re-renders accumulated Markdown as input streams", async () => {
