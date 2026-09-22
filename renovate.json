@@ -1,33 +1,35 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:best-practices"],
+  "automerge": false,
+  "schedule": ["before 6am on monday"],
+  "timezone": "Europe/Warsaw",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 6am on the first day of the month"]
+  },
   "packageRules": [
     {
-      "description": "Upgrade the synchronized Vite+ toolchain with vp migrate",
+      "description": "Keep the synchronized Vite+ toolchain together",
       "matchPackageNames": ["vite-plus", "@voidzero-dev/vite-plus-core"],
-      "enabled": false
+      "groupName": "vite+"
     },
     {
-      "description": "Automerge verified GitHub Action digest updates",
+      "description": "Group non-major GitHub Action updates",
       "matchManagers": ["github-actions"],
-      "automerge": true
+      "matchUpdateTypes": ["digest", "patch", "minor"],
+      "groupName": "github actions"
     },
     {
-      "description": "Group and automerge non-major development updates",
-      "matchDepTypes": ["devDependencies"],
+      "description": "Group non-major npm dependency updates",
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["!pnpm", "!vite-plus", "!@voidzero-dev/vite-plus-core"],
       "matchUpdateTypes": ["digest", "patch", "minor"],
-      "groupName": "development dependencies",
-      "automerge": true
+      "groupName": "non-major dependencies"
     },
     {
       "description": "Review package manager updates manually",
-      "matchPackageNames": ["pnpm"],
-      "automerge": false
-    },
-    {
-      "description": "Review runtime dependency updates manually",
-      "matchPackageNames": ["@comark/ansi"],
-      "automerge": false
+      "matchPackageNames": ["pnpm"]
     }
   ]
 }
