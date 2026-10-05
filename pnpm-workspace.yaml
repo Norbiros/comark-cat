@@ -1,10 +1,10 @@
 catalogs:
   build:
-    publint: 0.3.23
+    publint: 0.3.25
     typescript: 7.0.2
     unplugin-unused: 0.6.0
   types:
-    "@types/node": 24.13.3
+    "@types/node": 24.19.1
   vite:
     vite: npm:@voidzero-dev/vite-plus-core@0.2.8
     vite-plus: 0.2.8
