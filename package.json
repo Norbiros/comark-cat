@@ -46,7 +46,7 @@
     "katex": "0.18.7",
     "publint": "catalog:build",
     "rangi": "2.2.0",
-    "supports-hyperlinks": "4.5.0",
+    "supports-hyperlinks": "5.0.0",
     "typescript": "catalog:build",
     "unplugin-unused": "catalog:build",
     "vite": "catalog:vite",
